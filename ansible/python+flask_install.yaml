@@ -1,0 +1,15 @@
+- hosts: web
+  become: true
+  tasks:
+    - name: Python ve pip kur
+      apt:
+        name: "{{ item }}"
+        update_cache: yes
+      loop:
+        - python3
+        - python3-pip
+
+    - name: Flask kur
+      apt:
+        name: python3-flask
+        state: present
